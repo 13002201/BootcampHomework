@@ -1,0 +1,20 @@
+name: PR Opened
+
+on:
+  pull_request:
+    branches:
+      - main
+    types: [opened]
+
+jobs:
+  print-messages:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print environment variable
+        env:
+          MY_ENV_VAR: "This is a public environment variable"
+        run: echo "Message from environment variable: $MY_ENV_VAR"
+        
+      - name: Print secret
+        run: echo "Message from secret: ${{ secrets.MY_SECRET }}"
